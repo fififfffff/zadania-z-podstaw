@@ -1,0 +1,39 @@
+import speech_recognition as sr
+import pyttsx3 as tts 
+import webbrowser
+import pyaudio
+import pyautogui
+import keyboard
+
+
+engine = tts.init()
+engine.setProperty("rate", 130)
+engine.say("Cześć Filip.")
+engine.runAndWait()
+ 
+def recognise(msg = "Daj komendę"):
+    r = sr.Recognizer()
+    engine.say("Co mogę dla ciebie zrobić")
+    engine.runAndWait()
+
+    with sr.Microphone() as source:
+        
+        audio = r.listen(source)
+        try:
+            recognise_text = r.recognize_google(audio, language="pl-PL")
+            print("Powiedziałeś: " + recognise_text)
+            return recognise_text.lower()
+        except:
+            engine.say("Nie rozumiem")
+            engine.runAndWait()
+
+while True: 
+    while keyboard.is_pressed('shift+p'):
+        text = recognise()
+        word_list = text.split(" ")
+        if ("otwórz" in text and word_list[0] == "otwórz") or ("uruchom" in text and word_list[0] == "uruchom") or ("włącz" in text and word_list[0] == "włącz"):
+            if "przeglądarkę" in text:
+                engine.say("Otwieram google chrome")
+                engine.runAndWait()
+                chrome_path = "C:/Program Files/Google/Chrome/Application/chrome.exe %s"
+                webbrowser.get(chrome_path).open_new_tab("https://www.google.com")

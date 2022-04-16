@@ -1,20 +1,14 @@
-
-
-def kelwin():
-    a = float(input("Podaj temperatuję w kelvinach: "))
-    b = a - 273.15
-    if a - 273.15 < 0:
-        print("none")
-    else:  
-        print("Jest", a - 273.15, "stopni celcjusza")
-    def farenhit():
-        c = b * 1.8
-        d = c + 32
-        print(d)
+liczby = []
+a = 0
+for i in range(200):
+    b = 0
+    for i in range(len(str(a))):
         
-    farenhit()
+        if str(a)[b] == "6":
+            liczby.append(a)
+            b += 1
+        else:
+            b += 1
+    a += 1
 
-
-
-kelwin()
-
+print(liczby)

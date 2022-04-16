@@ -1,7 +1,17 @@
-def podatki():
-    a = int(input("Podaj przychód: "))
-    b = int(input("Podaj podatki w procentach: "))
-    d = a * b
-    c = d / 100
-    print("Twój dochód to", a - c )
-podatki()
+import random
+lista = []
+c = 0
+for i in range(20):
+    a = random.randint(1,10)
+    lista.append(a)
+    print(a)
+for b in lista:
+    if a % 2 != 0:
+        c += b
+    else:
+        continue
+        
+
+
+
+print(c)
